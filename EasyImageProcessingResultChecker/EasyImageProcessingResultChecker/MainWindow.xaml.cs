@@ -243,5 +243,11 @@ namespace EasyImageProcessingResultChecker
             image = image_history[selected_id];
             rewrite_image();
         }
+
+        private void menue_verinfo_click(object sender, RoutedEventArgs e)
+        {
+            VersionWindow vw = new VersionWindow();
+            vw.Show();
+        }
     }
 }

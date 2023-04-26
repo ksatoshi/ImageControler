@@ -57,8 +57,12 @@
                 <MenuItem Header="リセット"/>
                 <MenuItem Header="保存"/>
             </MenuItem>
+            <MenuItem Header="AI生成">
+                <MenuItem Header="画像生成を始める"/>
+                <MenuItem Header="初期設定"/>
+            </MenuItem>
             <MenuItem Header="ヘルプ">
-                <MenuItem Header="バージョン情報"/>
+                <MenuItem Header="バージョン情報" Click="menue_verinfo_click"/>
             </MenuItem>
         </Menu>
         <StatusBar Grid.Row="3" Grid.ColumnSpan="2">
