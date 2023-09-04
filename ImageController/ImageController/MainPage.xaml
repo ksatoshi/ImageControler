@@ -2,8 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ImageController.MainPage">
-
-    <ScrollView>
-    </ScrollView>
-
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="ファイル">
+            <MenuFlyoutItem Text="開く"/>
+            <MenuFlyoutItem Text="名前を付けて保存"/>
+            <MenuFlyoutItem Text="削除"/>
+            <MenuFlyoutItem Text="閉じる"/>
+        </MenuBarItem>
+        <MenuBarItem Text="ヒストリー">
+            <MenuFlyoutItem Text="リセット"/>
+            <MenuFlyoutItem Text="保存"/>
+        </MenuBarItem>
+        <MenuBarItem Text="ヘルプ">
+            <MenuFlyoutItem Text="バージョン情報"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
 </ContentPage>
