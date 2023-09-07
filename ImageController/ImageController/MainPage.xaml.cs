@@ -26,7 +26,7 @@ namespace ImageController
             {
                 RowDefinitions =
                 {
-                    new RowDefinition{Height = new GridLength(20)}, //メニューバーが配置されるRow高さは仮で0
+                    new RowDefinition{Height = GridLength.Auto},
                     new RowDefinition(),
                     new RowDefinition()
                 },
@@ -55,18 +55,52 @@ namespace ImageController
             
             Grid.SetRow(menuBar,0);
             Grid.SetColumnSpan(menuBar,2);*/
-            
-            
 
+            
+            // コントロール用のボタン群を生成
+            var buttonArrayStack = new StackLayout
+            {
+                Margin = new Thickness(20), Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.Start,
+                Spacing = 6
+            };
+            
+            buttonArrayStack.Add(new Button{Text = "読み込み"});
+            buttonArrayStack.Add(new Button{Text = "保存"});
+            buttonArrayStack.Add(new Button{Text = "比較"});
+            buttonArrayStack.Add(new Button{Text = "削除"});
+            
+            // 各種パラメーター入力用テキストボックス群
+            var filterSettingsStack = new StackLayout
+            {
+                Margin = new Thickness(20),
+                Spacing = 6
+            };
+
+            var filterList = new List<string>();
+            filterList.Add("ガウシアンフィルタ");
+            filterList.Add("メディアンフィルタ");
+            filterList.Add("グレースケール");
+
+            var filterPicker = new Picker { Title = "フィルターセレクター" };
+            filterPicker.ItemsSource = filterList;
+            
+            filterSettingsStack.Add(filterPicker);
+            filterSettingsStack.Add(new Label{Text = "kernel_size"});
+            filterSettingsStack.Add(new Entry{Placeholder = "kernel_size"});
+            filterSettingsStack.Add(new Label{Text = "閾値1"});
+            filterSettingsStack.Add(new Entry{Placeholder = "閾値1"});
+            filterSettingsStack.Add(new Label{Text = "閾値2"});
+            filterSettingsStack.Add(new Entry{Placeholder = "閾値2"});
+            filterSettingsStack.Add(new Button{Text = "実行"});
+            
+            rootGrid.Add(buttonArrayStack,1,0);
+            rootGrid.Add(filterSettingsStack,1,1);
+            
+            
+            
             Content = rootGrid;
         }
-
-        /*private MenuBarItem DesktopMenubar()
-        {
-            var menuBar = new MenuBarItem
-            {
-                
-            };
-        }*/
+        
     }
 }
