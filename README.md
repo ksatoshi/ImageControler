@@ -1,7 +1,7 @@
 # ImageController
 OpenCVのパラメータ変更の結果を手軽にみれるやつ
 
-# 開発環境(2023/09/8日辞典)
+# 開発環境(2023/09/8日時点)
 - windows11
 - Visual Studio2022
 - .NET6(6.0.41)
