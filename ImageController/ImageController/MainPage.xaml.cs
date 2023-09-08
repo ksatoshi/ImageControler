@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Net.Mime;
+using Microsoft.Maui.Platform;
 
 namespace ImageController
 {
@@ -14,8 +15,20 @@ namespace ImageController
         
         private void MainPageLayout()
         {
-            //Title = "MaiPageLayout";
+            Image nonLoadingPlaceHolder;
+            
+            try
+            {
+                //画像未読み込み時用のプレースホルダーをロード
+                nonLoadingPlaceHolder = new Image { Source = ImageSource.FromFile("no_image.png"),Aspect = Aspect.Center};
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
+            
             /*
              * ImageControllerResultCheckerと同様に
              * Row*4,
@@ -28,7 +41,6 @@ namespace ImageController
                 {
                     new RowDefinition{Height = GridLength.Auto},
                     new RowDefinition(),
-                    new RowDefinition()
                 },
                 ColumnDefinitions =
                 {
@@ -97,7 +109,9 @@ namespace ImageController
             rootGrid.Add(buttonArrayStack,1,0);
             rootGrid.Add(filterSettingsStack,1,1);
             
-            
+            Grid.SetColumn(nonLoadingPlaceHolder,0);
+            Grid.SetRowSpan(nonLoadingPlaceHolder,2);
+            rootGrid.Add(nonLoadingPlaceHolder,0,0);
             
             Content = rootGrid;
         }
