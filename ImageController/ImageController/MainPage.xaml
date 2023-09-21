@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ImageController.MainPage">
+    
+    <!--メニューバー-->
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="ファイル">
-            <MenuFlyoutItem Text="開く"/>
+            <MenuFlyoutItem Text="開く,"/>
             <MenuFlyoutItem Text="名前を付けて保存"/>
             <MenuFlyoutItem Text="削除"/>
             <MenuFlyoutItem Text="閉じる"/>
@@ -17,4 +19,49 @@
             <MenuFlyoutItem Text="バージョン情報"/>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
+    
+    <!--メインとなるUI部分-->
+    <Grid>
+        <!--横2,縦2のグリッドを定義-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--コントロール用のボタン群-->
+        <StackLayout Grid.Column="1" Grid.Row="0" Margin="20" Orientation="Horizontal" HorizontalOptions="Start" Spacing="6">
+            <Button Text="読み込み"/>
+            <Button Text="保存"/>
+            <Button Text="比較"/>
+            <Button Text="削除"/>
+        </StackLayout>
+        
+        <!--パラメーター入力用のテキストボックス群-->
+        <!--フィルターセレクター-->
+        <StackLayout Grid.Column="1" Grid.Row="1" Margin="20" Spacing="6">
+            <Picker Title="フィルターセレクター">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>ガウシアンフィルタ</x:String>
+                        <x:String>メディアンフィルタ</x:String>
+                        <x:String>グレースケール</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="kernel_size"/>
+            <Entry Placeholder="kernel_size"/>
+            <Label Text="閾値1"/>
+            <Entry Placeholder="閾値1"/>
+            <Label Text="閾値2"/>
+            <Entry Placeholder="閾値2"/>
+            <Button Text="実行"/>
+        </StackLayout>
+        
+        <!--画像未読み込み時用のプレースホルダー-->
+        <Image Source="no_image.png" Grid.Column="0" Grid.RowSpan="2" Aspect="Center"/>
+    </Grid>
 </ContentPage>
