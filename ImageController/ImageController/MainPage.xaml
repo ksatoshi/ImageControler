@@ -34,7 +34,7 @@
         
         <!--コントロール用のボタン群-->
         <StackLayout Grid.Column="1" Grid.Row="0" Margin="20" Orientation="Horizontal" HorizontalOptions="Start" Spacing="6">
-            <Button Text="読み込み"/>
+            <Button Text="読み込み" Clicked="Load_Button_Clicked"/>
             <Button Text="保存"/>
             <Button Text="比較"/>
             <Button Text="削除"/>
@@ -43,7 +43,7 @@
         <!--パラメーター入力用のテキストボックス群-->
         <!--フィルターセレクター-->
         <StackLayout Grid.Column="1" Grid.Row="1" Margin="20" Spacing="6">
-            <Picker Title="フィルターセレクター">
+            <Picker Title="フィルターセレクター"> <!--TODO: フィルターセレクターの存在が認知され安くなるように修正-->
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>ガウシアンフィルタ</x:String>
@@ -62,6 +62,6 @@
         </StackLayout>
         
         <!--画像未読み込み時用のプレースホルダー-->
-        <Image Source="no_image.png" Grid.Column="0" Grid.RowSpan="2" Aspect="Center"/>
+        <Image Source="no_image.png" Grid.Column="0" Grid.RowSpan="2" Aspect="AspectFit" x:Name="image_view"/>
     </Grid>
 </ContentPage>
