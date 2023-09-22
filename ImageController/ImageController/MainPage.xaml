@@ -62,6 +62,6 @@
         </StackLayout>
         
         <!--画像未読み込み時用のプレースホルダー-->
-        <Image Source="no_image.png" Grid.Column="0" Grid.RowSpan="2" Aspect="AspectFit" x:Name="image_view"/>
+        <Image Source="no_image.png" Grid.Column="0" Grid.RowSpan="2" Aspect="AspectFit" x:Name="image_view" Margin="20"/>
     </Grid>
 </ContentPage>
