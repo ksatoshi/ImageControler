@@ -38,5 +38,21 @@ namespace ImageController
                 Debug.WriteLine(ex.Message);
             }    
         }
+
+        // 画像を読み込むための関数
+        public Mat ImageLoader(String fileName)
+        {
+            Mat image = null;
+            try
+            {
+                image = Cv2.ImRead(fileName);
+                return image;
+            }catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
+            return image;
+        }
     }
 }
