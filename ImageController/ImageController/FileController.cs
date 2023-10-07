@@ -51,6 +51,7 @@ public class FileController
         foreach (var file in fileList)
         {
             Debug.WriteLine("Delete:" + file);
+            File.Delete(file);
         }
     }
 }

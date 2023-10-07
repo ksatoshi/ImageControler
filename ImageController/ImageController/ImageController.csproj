@@ -52,6 +52,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="OpenCvSharp4" Version="4.8.0.20230708" />
 		<PackageReference Include="OpenCvSharp4.Windows" Version="4.8.0.20230708" />
+		<PackageReference Include="UuidExtensions" Version="1.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>

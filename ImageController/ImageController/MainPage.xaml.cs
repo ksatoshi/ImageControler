@@ -50,6 +50,8 @@ public partial class MainPage : ContentPage
         bool res =  await DisplayAlert("終了", "アプリケーションを終了します。", "Agree","Disagree");
         if (res == true)
         {
+            // 一時ファイルディレクトリを空にしてからアプリを終了させる
+            imageFileController.DeleteTempFiles();
             Application.Current.CloseWindow(GetParentWindow());
         }
 
