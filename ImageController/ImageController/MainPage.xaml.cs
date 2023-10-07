@@ -18,14 +18,27 @@ public partial class MainPage : ContentPage
     {
         // ファイルパスを取得
         var path =await imageFileController.FileSelect();
-        Debug.WriteLine("path:" +path.FullPath);
+        if (path != null)
+        {
+            Debug.WriteLine("path:" + path.FullPath);
 
-        // 画像を読み込み一時ファイルディレクトリに書き出す
-        Mat image = imageFileController.ImageLoader(path.FullPath);
-        imageFileController.ImageFileWriteTmp(image, "tmp.png");
+            // 画像を読み込み一時ファイルディレクトリに書き出す
+            Mat image = imageFileController.ImageLoader(path.FullPath);
+            imageFileController.ImageFileWriteTmp(image, "tmp.png");
 
-        // 一時ファイルディレクトリからロードし表示する
-        var tmpImagePath = imageFileController.GetTmpFilePath("tmp.png");
-        image_view.Source = tmpImagePath;
+            // 一時ファイルディレクトリからロードし表示する
+            var tmpImagePath = imageFileController.GetTmpFilePath("tmp.png");
+            image_view.Source = tmpImagePath;
+        }
+        else
+        {
+            await DisplayAlert("File Loading Error!!", "ファイルの読み込みに失敗しました。\n再度実行してください", "OK");
+        }
+    }
+
+    private void Clear_Button_Clicked(object sender, EventArgs e)
+    {
+        image_view.Source = "no_image.png";
+        imageFileController.DeleteTempFiles();
     }
 }
