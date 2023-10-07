@@ -1,5 +1,6 @@
 ﻿using OpenCvSharp;
 using System.Diagnostics;
+using UuidExtensions;
 
 namespace ImageController;
 
@@ -21,8 +22,8 @@ public partial class MainPage : ContentPage
         if (path != null)
         {
             Debug.WriteLine("path:" + path.FullPath);
-            Guid fileUuid = Guid.NewGuid();
-            string tmpFileName = $"{fileUuid.ToString()}.png";
+            var tmpFileUuid = Uuid7.Id25();
+            string tmpFileName = $"{tmpFileUuid}.png";
 
             // 画像を読み込み一時ファイルディレクトリに書き出す
             Mat image = imageFileController.ImageLoader(path.FullPath);
