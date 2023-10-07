@@ -1,11 +1,5 @@
 ﻿using OpenCvSharp;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageController
 {
@@ -15,7 +9,7 @@ namespace ImageController
         {
             var customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
             {
-                {DevicePlatform.WinUI, new[] {"bmp","dib","jpeg","jpg","jpe","png","pbm","pgm","ppm","sr","ras","tiff","tif"}},
+                {DevicePlatform.WinUI, new[] {"bmp","dib","jpeg","jpg","jpeg","png","pbm","pgm","ppm","sr","ras","tiff","tif"}},
                 {DevicePlatform.macOS, new[]{"png","jpeg","tiff","bmp"} }
             });
 
