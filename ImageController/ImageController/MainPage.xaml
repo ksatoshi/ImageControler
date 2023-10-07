@@ -37,7 +37,7 @@
             <Button Text="読み込み" Clicked="Load_Button_Clicked"/>
             <Button Text="保存"/>
             <Button Text="比較"/>
-            <Button Text="削除"/>
+            <Button Text="削除" Clicked="Clear_Button_Clicked"/>
         </StackLayout>
         
         <!--パラメーター入力用のテキストボックス群-->

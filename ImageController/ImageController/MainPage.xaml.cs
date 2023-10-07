@@ -1,5 +1,6 @@
 ﻿using OpenCvSharp;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace ImageController;
 
@@ -21,13 +22,15 @@ public partial class MainPage : ContentPage
         if (path != null)
         {
             Debug.WriteLine("path:" + path.FullPath);
+            Guid fileUuid = Guid.NewGuid();
+            string tmpFileName = $"{fileUuid.ToString()}.png";
 
             // 画像を読み込み一時ファイルディレクトリに書き出す
             Mat image = imageFileController.ImageLoader(path.FullPath);
-            imageFileController.ImageFileWriteTmp(image, "tmp.png");
+            imageFileController.ImageFileWriteTmp(image, tmpFileName);
 
             // 一時ファイルディレクトリからロードし表示する
-            var tmpImagePath = imageFileController.GetTmpFilePath("tmp.png");
+            var tmpImagePath = imageFileController.GetTmpFilePath(tmpFileName);
             image_view.Source = tmpImagePath;
         }
         else

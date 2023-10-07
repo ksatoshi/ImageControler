@@ -13,7 +13,7 @@ namespace ImageController
                 {DevicePlatform.macOS, new[]{"png","jpeg","tiff","bmp"} }
             });
 
-            options = new()
+            Options = new()
             {
                 PickerTitle = "画像ファイルを選択してください",
                 FileTypes = customFileType
@@ -24,29 +24,31 @@ namespace ImageController
         public void ImageFileWriteTmp(Mat image,String fileName)
         {
             var cacheDir = FileSystem.Current.CacheDirectory;
+
             try
             {
-                Cv2.ImWrite(cacheDir + fileName, image);
-                Debug.WriteLine("Write:" + cacheDir + "." + fileName);
+                string tmpFIlePath = System.IO.Path.Combine(cacheDir, fileName);
+
+                Cv2.ImWrite(tmpFIlePath,image);
+                Debug.WriteLine("Write:" +tmpFIlePath);
             }catch(Exception ex) {
                 Debug.WriteLine(ex.Message);
             }    
         }
 
         // 画像を読み込むための関数
-        public Mat ImageLoader(String fileName)
+        public Mat ImageLoader(string fileName)
         {
-            Mat image = null;
             try
             {
-                image = Cv2.ImRead(fileName);
+                Mat image = Cv2.ImRead(fileName);
                 return image;
             }catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
 
-            return image;
+            return null;
         }
     }
 }
