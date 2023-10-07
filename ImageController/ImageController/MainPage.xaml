@@ -6,10 +6,10 @@
     <!--メニューバー-->
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="ファイル">
-            <MenuFlyoutItem Text="開く,"/>
+            <MenuFlyoutItem Text="開く" Clicked="Load_Button_Clicked"/>
             <MenuFlyoutItem Text="名前を付けて保存"/>
-            <MenuFlyoutItem Text="削除"/>
-            <MenuFlyoutItem Text="閉じる"/>
+            <MenuFlyoutItem Text="削除" Clicked="Clear_Button_Clicked"/>
+            <MenuFlyoutItem Text="閉じる" Clicked="Close_Button_Clicked"/>
         </MenuBarItem>
         <MenuBarItem Text="ヒストリー">
             <MenuFlyoutItem Text="リセット"/>

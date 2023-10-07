@@ -1,6 +1,5 @@
 ﻿using OpenCvSharp;
 using System.Diagnostics;
-using System.Security.Cryptography;
 
 namespace ImageController;
 
@@ -43,5 +42,15 @@ public partial class MainPage : ContentPage
     {
         image_view.Source = "no_image.png";
         imageFileController.DeleteTempFiles();
+    }
+
+    private async void Close_Button_Clicked(object sender, EventArgs e)
+    {
+        bool res =  await DisplayAlert("終了", "アプリケーションを終了します。", "Agree","Disagree");
+        if (res == true)
+        {
+            Application.Current.CloseWindow(GetParentWindow());
+        }
+
     }
 }
